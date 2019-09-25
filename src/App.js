@@ -3,7 +3,7 @@ import axios from "axios";
 import "./App.css";
 
 const App = () => {
-  const requestUrl = "https://api.piggy.co.in/v1/mf/?key=118656INF204K01E05";
+  //const requestUrl = "https://api.piggy.co.in/v1/mf/?key=118656INF204K01E05";
 
   const [funds, setFunds] = useState([]);
   const [fundList, addFund] = useState([]);
@@ -41,8 +41,8 @@ const App = () => {
   }, []);
 
   const getFunds = async () => {
-    const response = await fetch(requestUrl);
-    const data = await response.json();
+    //const response = await fetch(requestUrl);
+    //const data = await response.json();
     //console.log(data.data.funds);
     //setFunds(data.data.funds);
   };
@@ -60,7 +60,7 @@ const App = () => {
   return (
     <div className="App">
       <div className="container mt-4">
-        <h3>Piggy Search</h3>
+        <h3>Piggy Fund Search</h3>
 
         <form onSubmit={searchFund} className="search-form">
           <div className="row">
@@ -81,18 +81,21 @@ const App = () => {
             Compare Selected
           </button>
         </span>
-        {flag && (
-          <table className="table table-flushed">
-            <thead>
-              <tr>
-                <th colSpan="5">Name</th>
-                <th colSpan="5">Rating</th>
-                <th colSpan="5">Riskometer</th>
-                <th colSpan="5">Asset_aum</th>
-                <th colSpan="5">Return 3year</th>
-              </tr>
-            </thead>
-          </table>
+        {!!flag && (
+          <div>
+            <p class="p-3 mt-2 text-dark">Compare beteween policies </p>
+            <table className="table  table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th colSpan="5">Name</th>
+                  <th colSpan="5">Rating</th>
+                  <th colSpan="10">Riskometer</th>
+                  <th colSpan="5">Asset_aum</th>
+                  <th colSpan="5">Return 3year</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
         )}
         {funds.map((fund, i) =>
           // <Fund
